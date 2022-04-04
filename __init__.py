@@ -3,6 +3,7 @@
 # WITHOUT ANY WARRANTY that your father will turn into a holdout collection.
 
 import bpy, addon_utils
+from bpy.types import AddonPreferences
 
 bl_info = {
     "name": "Collection Viewer Selection (CSV)", "author": "Taiseibutsu",
@@ -66,12 +67,28 @@ def TB_OUTLINER_UI_HEADER(self, context):
     layout = self.layout
     layout.operator("wm.tb_collection_selection",text="",icon='VIS_SEL_11')
 
+class TB_Collection_Viewer_Selection_PreferencesPanel(AddonPreferences):
+    bl_idname = __name__
+    bl_label = "Intruction to use"
+    def draw_header(self, context):
+        layout = self.layout
+        layout.label(icon='INFO')
+        layout.label(text="Instruction to use")
+    def draw(self, context):
+        layout = self.layout
+        row = layout.row(align= True)
+        row.label(icon='X')
+        row.label(text="In order to exit mode, press ESC or Rigth Mouse Click")
+
 def register():
     bpy.utils.register_class(tb_colection_selector_viewer)
+    bpy.utils.register_class(TB_Collection_Viewer_Selection_PreferencesPanel)
     bpy.types.OUTLINER_HT_header.append(TB_OUTLINER_UI_HEADER)
+
 
 def unregister():
     bpy.utils.unregister_class(tb_colection_selector_viewer)
+    bpy.utils.unregister_class(TB_Collection_Viewer_Selection_PreferencesPanel)
     bpy.types.OUTLINER_HT_header.remove(TB_OUTLINER_UI_HEADER)
 
 
