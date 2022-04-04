@@ -1,4 +1,4 @@
-# CSV_Collection_Selection_Viewer
+# Collection Selection Viewer (CSV)
 Blender Add-on that dynamically enable only selected collections
 ____________
 <img align="right" width="360" height="340" src="https://user-images.githubusercontent.com/84092569/161450046-e279ebca-1f69-49a1-b456-9c4bd865d732.png">
